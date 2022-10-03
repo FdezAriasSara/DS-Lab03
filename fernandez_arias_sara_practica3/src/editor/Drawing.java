@@ -17,7 +17,7 @@ public class Drawing {
 
 	public void draw() {
 		figures.forEach(figure -> figure.dibujar());
-		// System.out.println("Estoy vacío (por ahora)");
+		
 	}
 
 	public Figure figureAt(int x, int y) {

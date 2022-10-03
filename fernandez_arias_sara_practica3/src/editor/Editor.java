@@ -45,7 +45,8 @@ public class Editor
 
 	public void drop() {
 		if(selected!=null) {
-			//calcular distancia entre el punto actual y los lastX , lastY
+			//TODO : HACER DIAGRAMA DE FLUJO DE DROP
+			
 		}
 		
 	}

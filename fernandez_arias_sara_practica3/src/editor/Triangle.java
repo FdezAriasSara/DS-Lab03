@@ -13,7 +13,11 @@ public class Triangle implements Figure {
 
 	@Override
 	public void mover(Point nextPosition) {
-
+		int x_movement=nextPosition.x-v1.x;
+		int y_movement=nextPosition.y-v1.y;
+		v1=nextPosition;
+		v2=new Point(v2.x+x_movement,v2.y+y_movement);		
+		v3=new Point(v3.x+x_movement,v3.y+y_movement);
 		
 	}
 
