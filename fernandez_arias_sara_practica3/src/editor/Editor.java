@@ -2,8 +2,11 @@ package editor;
 
 public class Editor 
 {	
-	private Drawing drawing;
 	
+	private static final int NONE = -1;
+	private Drawing drawing;
+	private Figure selected;
+	private int lastX, lastY;
 	public Editor(Drawing drawing)
 	{
 		setDrawing(drawing);
@@ -23,7 +26,34 @@ public class Editor
 	{
 		drawing.draw();
 	}	
-	public void addFigure(String figure) {
-		//drawing.add(figure)
+	public void addFigure(Figure figure) {
+		this.selected=figure;
+		drawing.addFigure(figure);
+	}
+
+	public void click(int x, int y) {
+		Figure figure=drawing.figureAt(x,y);
+		this.selected=figure;
+		
+	}
+
+	public void move(int x, int y) {
+		this.lastX=x;
+		this.lastY=y;
+		
+	}
+
+	public void drop() {
+		if(selected!=null) {
+			//calcular distancia entre el punto actual y los lastX , lastY
+		}
+		
+	}
+
+	public void selectionTool() {
+		this.selected=null;
+		this.lastX=NONE;
+		this.lastY=NONE;
+		
 	}
 }
