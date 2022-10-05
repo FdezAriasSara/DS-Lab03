@@ -1,6 +1,7 @@
 package editor;
 
 import java.awt.Point;
+import java.util.List;
 
 public class Triangle implements Figure {
 
@@ -22,9 +23,17 @@ public class Triangle implements Figure {
 	}
 
 	@Override
-	public boolean select(int x, int y) {
-		Point posicion = new Point(x,y);
+	public boolean select(Point posicion) {
+	
 		return posicion.equals(v1) || posicion.equals(v2) || posicion.equals(v3);
+		
+	}
+
+	@Override
+	public void create(List<Point> points) {
+		v1=points.get(0);
+		v2=points.get(1);
+		v3=points.get(2);
 		
 	}
 

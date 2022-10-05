@@ -1,6 +1,7 @@
 package editor;
 
 import java.awt.Point;
+import java.util.List;
 
 public class Circle implements Figure {
 	private int radio;
@@ -19,10 +20,17 @@ public class Circle implements Figure {
 	}
 
 	@Override
-	public boolean select(int x, int y) {
-		double distancia = Math.sqrt(Math.pow(x - centro.x, 2) + Math.pow(y - centro.y, 2));
+	public boolean select(Point posicion) {
+		double distancia = Math.sqrt(Math.pow(posicion.x - centro.x, 2) + Math.pow(posicion.y - centro.y, 2));
 		return distancia < radio;
 
+	}
+
+	@Override
+	public void create(List<Point> points) {
+		centro=points.get(0);
+		radio=points.get(1).x-centro.x;
+		
 	}
 
 }

@@ -1,8 +1,10 @@
 package editor;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class Drawing {
 	private List<Figure> figures;
@@ -12,6 +14,7 @@ public class Drawing {
 	}
 
 	public void addFigure(Figure figure) {
+
 		this.figures.add(figure);
 	}
 
@@ -21,9 +24,16 @@ public class Drawing {
 	}
 
 	public Figure figureAt(int x, int y) {
-		Figure found;
+		Figure found = null;
 		try {
-			found = figures.stream().filter(figure -> figure.select(x, y)).findFirst().get();
+			
+			for (Figure figure : figures) {
+				if(figure.select(new Point(x,y))) {
+					found=figure;			
+					break;
+				}
+			}
+
 		} catch (NoSuchElementException e) {
 			found = null;
 		}
