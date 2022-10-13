@@ -1,4 +1,4 @@
-package editor;
+package editor.figure;
 
 import java.awt.Point;
 import java.util.List;
@@ -14,23 +14,19 @@ public class Circle implements Figure {
 	}
 
 	@Override
-	public void mover(Point nextPosition) {
-		this.centro = nextPosition;
+	public void mover(int x , int y) {
+		this.centro = new Point(x,y);
 
 	}
 
 	@Override
-	public boolean select(Point posicion) {
+	public boolean select(int x , int y) {
+		Point posicion=new Point(x,y);
 		double distancia = Math.sqrt(Math.pow(posicion.x - centro.x, 2) + Math.pow(posicion.y - centro.y, 2));
 		return distancia < radio;
 
 	}
 
-	@Override
-	public void create(List<Point> points) {
-		centro=points.get(0);
-		radio=points.get(1).x-centro.x;
-		
-	}
+	
 
 }

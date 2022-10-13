@@ -1,4 +1,4 @@
-package editor;
+package editor.figure;
 
 import java.awt.Point;
 import java.util.List;
@@ -13,7 +13,8 @@ public class Triangle implements Figure {
 	}
 
 	@Override
-	public void mover(Point nextPosition) {
+	public void mover(int x, int y ) {
+		Point nextPosition=new Point(x,y);
 		int x_movement=nextPosition.x-v1.x;
 		int y_movement=nextPosition.y-v1.y;
 		v1=nextPosition;
@@ -23,19 +24,12 @@ public class Triangle implements Figure {
 	}
 
 	@Override
-	public boolean select(Point posicion) {
-	
+	public boolean select(int x,int y ) {
+		Point posicion=new Point(x,y);
 		return posicion.equals(v1) || posicion.equals(v2) || posicion.equals(v3);
 		
 	}
 
-	@Override
-	public void create(List<Point> points) {
-		v1=points.get(0);
-		v2=points.get(1);
-		v3=points.get(2);
-		
-	}
-
+	
 	
 }

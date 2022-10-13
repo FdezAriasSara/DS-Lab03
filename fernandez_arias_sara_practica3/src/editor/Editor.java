@@ -1,21 +1,24 @@
 package editor;
 
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
+import editor.figure.Figure;
+import editor.tool.SelectionTool;
+import editor.tool.Tool;
 
 public class Editor {
 
 	private static final int NONE = -1;
 	private Drawing drawing;
-	private Figure selected,beingCreated;
-	private List<Point> points;
-	private int lastX, lastY;
+	private Tool currentTool;
 
 	public Editor(Drawing drawing) {
 		setDrawing(drawing);
-		this.points = new ArrayList<>();
 
+		currentTool = new SelectionTool(this);
+
+	}
+
+	void selectTool(Tool tool) {
+		this.currentTool = tool;
 	}
 
 	public Drawing getDrawing() {
@@ -27,87 +30,32 @@ public class Editor {
 	}
 
 	public void drawDocument()
-	// "dibujar"
-	
+
+
 	{
-		beingCreated.create(points);
-		drawing.addFigure(beingCreated);
 		drawing.draw();
-		selectionTool();//It's the default one!
+		selectTool(new SelectionTool(this));// It's the default one!
 	}
 
 	public void addFigure(Figure figure) {
-		points = new ArrayList<>();
-		this.beingCreated=figure;
-		// The figure is not included in the drawing straightforward
-		// its included when "dibujar" is used ) drawing.addFigure(figure);
+		drawing.addFigure(figure);
 	}
-
-	/**
-	 * This method will update the record of the coordinates selected. In case the
-	 * selection tool is in use,the drawing will be asked to return if there's any
-	 * figure in that position. In case it is, it will be the selected one.
-	 * 
-	 * @param x
-	 * @param y
-	 */
 
 	public void click(int x, int y) {
-		
 
-		if (selected == null) {
-			Figure figure = drawing.figureAt(x, y);
-			this.selected = figure;
-			
-		}
-		move(x,y);
+		currentTool.click(x, y);
 	}
 
-	/**
-	 * This method will update the record of the last coordinates selected.
-	 * The figure itself will not be moved until "soltar" is called (and "dibujar" right afterwards) .
-	 * 
-	 * @param x
-	 * @param y
-	 */
 	public void move(int x, int y) {
-
-		this.lastX = x;
-		this.lastY = y;
+		currentTool.moveTo(x, y);
 
 	}
 
-	/**
-	 * This method will add the last point to the list, if and only if , there's a
-	 * figure in process of being created. In case there's a selection, the figure will be moved to the last coordinates the user selected.
-	 * Else , it will essentially do nothing.
-	 * 
-	 */
-	public void drop() {
-		Point lastPoint = new Point(lastX, lastY);
-
-		if (beingCreated != null) {
-			
-			if (this.points.contains(lastPoint)) {
-				points.add(lastPoint);
-			}
-
-		}
-		else if(selected!=null) {
-			selected.mover(lastPoint);
-		}
+	public void release() {
+		currentTool.release();
 
 	}
-	/**
-	 * This tool essentially resets all attributes to the default value.
-	 */
 
-	public void selectionTool() {
-		this.selected = null;
-		this.beingCreated=null;
-		this.points=new ArrayList<>();
-		this.lastX = NONE;
-		this.lastY = NONE;
+	
 
-	}
 }

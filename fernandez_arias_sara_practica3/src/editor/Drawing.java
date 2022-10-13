@@ -1,10 +1,10 @@
 package editor;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+
+import editor.figure.Figure;
 
 public class Drawing {
 	private List<Figure> figures;
@@ -28,7 +28,7 @@ public class Drawing {
 		try {
 			
 			for (Figure figure : figures) {
-				if(figure.select(new Point(x,y))) {
+				if(figure.select(x,y)) {
 					found=figure;			
 					break;
 				}

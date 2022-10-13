@@ -4,6 +4,9 @@ package main;
 import java.io.*;
 
 import editor.*;
+import editor.figure.Circle;
+import editor.figure.Rectangle;
+import editor.figure.Triangle;
 
 public class Main {
 	private Editor editor;
@@ -66,7 +69,7 @@ public class Main {
 		if (action.equals("salir")) {
 			exit = true;
 		} else if (action.equals("seleccion")) {
-			editor.selectionTool();
+			editor.release();
 		} else if (action.equals("rectangulo")) {
 			editor.addFigure(new  Rectangle());
 		} else if (action.equals("circulo")) {
@@ -78,7 +81,7 @@ public class Main {
 		} else if (action.equals("mover")) {
 			move(tokens);
 		} else if (action.equals("soltar")) {
-			editor.drop();
+			editor.release();
 		} else if (action.equals("dibujar")) {
 			editor.drawDocument();
 		} else if (action.equals("ayuda")) {
