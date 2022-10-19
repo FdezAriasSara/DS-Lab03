@@ -16,7 +16,9 @@ public class Editor {
 		currentTool = new SelectionTool(this);
 
 	}
-
+	public void toolFinished() {
+		selectTool(new SelectionTool(this));
+	}
 	void selectTool(Tool tool) {
 		this.currentTool = tool;
 	}
@@ -34,7 +36,7 @@ public class Editor {
 
 	{
 		drawing.draw();
-		selectTool(new SelectionTool(this));// It's the default one!
+		toolFinished();// We go back to the default tool , selection
 	}
 
 	public void addFigure(Figure figure) {
