@@ -1,8 +1,5 @@
 package editor.figure;
 
-import java.awt.Point;
-import java.util.List;
-
 public interface Figure {
 	public void dibujar();
 
@@ -10,7 +7,9 @@ public interface Figure {
 
 	public boolean select(int x,int y);
 
+	
 
+	
 	
 
 }

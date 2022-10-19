@@ -114,7 +114,11 @@ public class Menu
 			showHelp();
 		} else if (action.equals("salir")) {
 			exit = true;
-		} else {
+		} else if (action.equals("repetir")) {
+			editor.redo();
+		} else if (action.equals("deshacer")) {
+			editor.undo();
+		}else {
 			if (tools.containsKey(action)) {
 				Tool tool = tools.get(action);
 				editor.selectTool(tool);

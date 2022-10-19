@@ -17,6 +17,10 @@ public class Drawing {
 
 		this.figures.add(figure);
 	}
+	public void removeFigure(Figure figure) {
+		
+		this.figures.remove(figure);
+	}
 
 	public void draw() {
 		figures.forEach(figure -> figure.dibujar());
