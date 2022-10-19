@@ -41,5 +41,8 @@ public class SelectionTool implements Tool {
 	void setSelected(Figure selected) {
 		this.selected = selected;
 	}
-
+	@Override
+	public String toString() {
+		return "Selection";
+	}
 }

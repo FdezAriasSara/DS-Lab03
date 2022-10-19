@@ -28,7 +28,7 @@ public class Editor {
 		return drawing;
 	}
 
-	public void setDrawing(Drawing drawing) {
+	private void setDrawing(Drawing drawing) {
 		this.drawing = drawing;
 	}
 
@@ -36,8 +36,9 @@ public class Editor {
 
 
 	{
+		System.out.println("Herramieta seleccionada : "+currentTool.toString());
 		drawing.draw();
-		toolFinished();// We go back to the default tool , selection
+		//toolFinished() its better that the tool itself decides when to be finished
 	}
 
 	 public void addFigure(Figure figure) {

@@ -34,5 +34,8 @@ public class RectangleCreationTool extends FigureCreationTool {
 		editor.addFigure(new Rectangle(upperDiagonalVertex,height,width ));
 		editor.toolFinished();
 	}
-
+	@Override
+	public String toString() {
+		return "Rectángulo";
+	}
 }

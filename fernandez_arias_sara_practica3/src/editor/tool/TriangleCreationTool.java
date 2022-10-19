@@ -6,24 +6,33 @@ import editor.Editor;
 import editor.figure.Triangle;
 
 public class TriangleCreationTool extends FigureCreationTool {
+	private static final int VERTICES = 3;
 	private Point[] vertices;
-
+	private int verticesLeft;
 	public TriangleCreationTool(Editor editor) {
 		super(editor);
-		vertices=new Point[3];
-		
+		vertices=new Point[VERTICES];
+		this.verticesLeft=VERTICES;
 	}
 	@Override
 	public void click(int x, int y) {
-		int numberOfElements=vertices.length;
-		if(numberOfElements<3) {
-			vertices[numberOfElements-1]=new Point(x,y);
+		
+		if(verticesLeft>0) {
 			
+			vertices[verticesLeft-1]=new Point(x,y);
+			--verticesLeft;
+			
+		}else {
+			editor.addFigure(new Triangle(vertices[0],vertices[1],vertices[2]));
+			editor.toolFinished();
 		}
-		editor.addFigure(new Triangle(vertices[0],vertices[1],vertices[2]));
-		editor.toolFinished();
+		
 	}
 
-	
+	@Override
+	public String toString() {
+		
+		return "Triangulo";
+	}
 
 }

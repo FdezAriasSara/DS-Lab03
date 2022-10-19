@@ -13,7 +13,8 @@ public class Triangle implements Figure {
 	}
 	@Override
 	public void dibujar() {
-		System.out.println(String.format("	-Triángulo: (%d,%d), (%d,%d),(%d,%d)",v1.x,v1.y,v2.x,v2.y,v3.x,v3.y));
+		
+		System.out.println(String.format("	-Triángulo: (%d,%d), (%d,%d), (%d,%d)",v1.x,v1.y,v2.x,v2.y,v3.x,v3.y));
 
 	}
 
@@ -35,6 +36,5 @@ public class Triangle implements Figure {
 		
 	}
 
-	
 	
 }

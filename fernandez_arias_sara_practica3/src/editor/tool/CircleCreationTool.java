@@ -8,7 +8,7 @@ import editor.figure.Circle;
 public class CircleCreationTool extends FigureCreationTool {
 	private Point center;
 	private int lastX;
-	
+
 	public CircleCreationTool(Editor editor) {
 		super(editor);
 
@@ -16,23 +16,26 @@ public class CircleCreationTool extends FigureCreationTool {
 
 	@Override
 	public void click(int x, int y) {
-		this.center=new Point(x,y);
+		this.center = new Point(x, y);
 
 	}
 
 	@Override
 	public void moveTo(int x, int y) {
-		this.lastX=x;
-	
+		this.lastX = x;
 
 	}
 
 	@Override
 	public void release() {
-		int radius=lastX-center.x;
-		editor.addFigure(new Circle(center,radius));
+		int radius = lastX - center.x;
+		editor.addFigure(new Circle(center, radius));
 		editor.toolFinished();
 
 	}
 
+	@Override
+	public String toString() {
+		return "Círculo";
+	}
 }

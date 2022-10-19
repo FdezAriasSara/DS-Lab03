@@ -85,6 +85,7 @@ public class Menu
 				else
 					throw new AssertionError("¡Sólo puede ser pulsar o mover!");
 			} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+			
 				output.printf("Error de sintaxis: faltan las coordenadas: %s <x>, <y>%n", action);
 			}
 			return;
