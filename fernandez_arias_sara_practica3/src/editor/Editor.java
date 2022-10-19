@@ -6,20 +6,17 @@ import editor.tool.Tool;
 
 public class Editor {
 
-	private static final int NONE = -1;
+
 	
 	private Drawing drawing;
 	private Tool currentTool;
 
-	public Editor(Drawing drawing) {
-		setDrawing(drawing);
-
+	public Editor() {
+		setDrawing(new Drawing());
 		currentTool = new SelectionTool(this);
 
 	}
-	public Editor() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	public void toolFinished() {
 		selectTool(new SelectionTool(this));
 	}
