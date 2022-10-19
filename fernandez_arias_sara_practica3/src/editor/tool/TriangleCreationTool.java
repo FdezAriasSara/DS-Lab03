@@ -3,6 +3,7 @@ package editor.tool;
 import java.awt.Point;
 
 import editor.Editor;
+import editor.figure.Triangle;
 
 public class TriangleCreationTool implements Tool {
 	private Point[] vertices;
@@ -18,6 +19,7 @@ public class TriangleCreationTool implements Tool {
 			vertices[numberOfElements-1]=new Point(x,y);
 			
 		}
+		editor.addFigure(new Triangle(vertices[0],vertices[1],vertices[2]));
 		editor.toolFinished();
 	}
 

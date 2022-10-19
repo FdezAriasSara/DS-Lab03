@@ -7,6 +7,11 @@ public class Circle implements Figure {
 	private int radio;
 	private Point centro;
 
+	public Circle(Point center, int radius) {
+		this.centro=center;
+		this.radio=radius;
+	}
+
 	@Override
 	public void dibujar() {
 		System.out.println(String.format("	-Círculo : (%d,%d), radio= %d", centro.x, centro.y, radio));

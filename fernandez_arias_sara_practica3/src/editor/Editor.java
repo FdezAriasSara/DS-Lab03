@@ -7,6 +7,7 @@ import editor.tool.Tool;
 public class Editor {
 
 	private static final int NONE = -1;
+	
 	private Drawing drawing;
 	private Tool currentTool;
 
@@ -19,7 +20,7 @@ public class Editor {
 	public void toolFinished() {
 		selectTool(new SelectionTool(this));
 	}
-	void selectTool(Tool tool) {
+	public void selectTool(Tool tool) {
 		this.currentTool = tool;
 	}
 
@@ -39,7 +40,7 @@ public class Editor {
 		toolFinished();// We go back to the default tool , selection
 	}
 
-	public void addFigure(Figure figure) {
+	 public void addFigure(Figure figure) {
 		drawing.addFigure(figure);
 	}
 

@@ -6,7 +6,11 @@ import java.util.List;
 public class Rectangle implements Figure {
 	private Point esquina;
 	private int ancho,alto;
-	
+	public Rectangle(Point esquina, int alto , int ancho) {
+		this.esquina=esquina;
+		this.alto=alto;
+		this.ancho=ancho;
+	}
 
 	@Override
 	public void dibujar() {

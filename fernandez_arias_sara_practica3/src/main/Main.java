@@ -2,22 +2,39 @@ package main;
 
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import editor.*;
 import editor.figure.Circle;
 import editor.figure.Rectangle;
 import editor.figure.Triangle;
+import editor.tool.CircleCreationTool;
+import editor.tool.RectangleCreationTool;
+import editor.tool.SelectionTool;
+import editor.tool.Tool;
+import editor.tool.TriangleCreationTool;
 
 public class Main {
-	private Editor editor;
+	private static Editor editor;
 	private boolean exit;
 	private BufferedReader input;
 	private PrintStream output;
-
+	private static Map<String, Tool> tools = new HashMap<>();
 	public static void main(String[] args) throws IOException {
+		initializeTools();
 		new Main().run();
 	}
-
+	private static void addTool(String key, Tool tool) {
+		tools.put(key, tool);
+	}
+	static void initializeTools()
+	{
+		addTool("seleccion", new SelectionTool(editor));
+		addTool("rectangulo", new RectangleCreationTool(editor));
+		addTool("circulo", new CircleCreationTool(editor));
+		addTool("triangulo", new TriangleCreationTool(editor));
+	}
 	public void run() throws IOException {
 		editor = new Editor(new Drawing());
 		input = new BufferedReader(new InputStreamReader(System.in));
@@ -71,11 +88,11 @@ public class Main {
 		} else if (action.equals("seleccion")) {
 			editor.release();
 		} else if (action.equals("rectangulo")) {
-			editor.addFigure(new  Rectangle());
+			editor.selectTool(tools.get("rectangulo"));
 		} else if (action.equals("circulo")) {
-			editor.addFigure(new Circle());
+			editor.selectTool(tools.get("circulo"));
 		} else if (action.equals("triangulo")) {
-			editor.addFigure(new Triangle());
+			editor.selectTool(tools.get("triangulo"));
 		} else if (action.equals("pulsar")) {
 			click(tokens);
 		} else if (action.equals("mover")) {

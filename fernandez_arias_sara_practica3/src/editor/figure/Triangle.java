@@ -6,6 +6,11 @@ import java.util.List;
 public class Triangle implements Figure {
 
 	private Point v1, v2, v3;// Los tres vértices del triángulo
+	public Triangle(Point v1,Point v2, Point v3) {
+		this.v1=v1;
+		this.v2=v2;
+		this.v3=v3;
+	}
 	@Override
 	public void dibujar() {
 		System.out.println(String.format("	-Triángulo: (%d,%d), (%d,%d),(%d,%d)",v1.x,v1.y,v2.x,v2.y,v3.x,v3.y));
