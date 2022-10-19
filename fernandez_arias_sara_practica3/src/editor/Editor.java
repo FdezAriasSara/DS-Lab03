@@ -17,6 +17,9 @@ public class Editor {
 		currentTool = new SelectionTool(this);
 
 	}
+	public Editor() {
+		// TODO Auto-generated constructor stub
+	}
 	public void toolFinished() {
 		selectTool(new SelectionTool(this));
 	}
