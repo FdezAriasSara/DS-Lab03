@@ -5,13 +5,13 @@ import java.awt.Point;
 import editor.Editor;
 import editor.figure.Circle;
 
-public class CircleCreationTool implements Tool {
+public class CircleCreationTool extends FigureCreationTool {
 	private Point center;
 	private int lastX;
-	private Editor editor;
-
+	
 	public CircleCreationTool(Editor editor) {
-		this.editor=editor;
+		super(editor);
+
 	}
 
 	@Override

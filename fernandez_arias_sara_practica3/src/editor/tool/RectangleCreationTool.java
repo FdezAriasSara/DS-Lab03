@@ -5,12 +5,13 @@ import java.awt.Point;
 import editor.Editor;
 import editor.figure.Rectangle;
 
-public class RectangleCreationTool implements Tool {
+public class RectangleCreationTool extends FigureCreationTool {
 	private Point upperDiagonalVertex;
 	private int lastX,lastY;
-	private Editor editor;
+	
 	public RectangleCreationTool(Editor editor) {
-		this.editor=editor;
+		super(editor);
+	
 	}
 
 	@Override

@@ -5,12 +5,13 @@ import java.awt.Point;
 import editor.Editor;
 import editor.figure.Triangle;
 
-public class TriangleCreationTool implements Tool {
+public class TriangleCreationTool extends FigureCreationTool {
 	private Point[] vertices;
-	private Editor editor;
+
 	public TriangleCreationTool(Editor editor) {
+		super(editor);
 		vertices=new Point[3];
-		this.editor=editor;
+		
 	}
 	@Override
 	public void click(int x, int y) {
@@ -23,17 +24,6 @@ public class TriangleCreationTool implements Tool {
 		editor.toolFinished();
 	}
 
-	@Override
-	public void moveTo(int x, int y) {
-		// does nothing
-
-	}
-
-	@Override
-	public void release() {
-		// does nothing
-		
-
-	}
+	
 
 }
